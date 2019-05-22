@@ -16,4 +16,3 @@ Focus on specific company or sector?
 * Scrape twitter using tweepy for occurence of a hashtag of a publicly traded company, for instance Tesla (https://www.promptcloud.com/blog/scrape-twitter-data-using-python-r/)
 
 * Related Kaggle Project https://www.kaggle.com/c/two-sigma-financial-news
-
