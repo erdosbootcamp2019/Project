@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
+# %%
 
 # ## Load Twitter API and some useful functions
 
-# In[ ]:
+# %%
 
 
 import tweepy 
@@ -39,7 +40,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 
-# In[ ]:
+# %%
 
 
 #function to clean up the text of tweet 
@@ -47,7 +48,7 @@ def clean_tweet(tweet):
     return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t]) (\w+:\/\/\S+)", " ", tweet).split())
 
 
-# In[ ]:
+# %%
 
 
 #simpler function to get tweets, doesnt work? 
@@ -62,7 +63,7 @@ def get_tweets_simple(query, max_tweets):
         tweets.append(parsed_tweet)
 
 
-# In[ ]:
+# %%
 
 
 #more complicated function to download tweets for given query
@@ -93,7 +94,7 @@ def get_tweets(query, max_tweets):
     return tweets
 
 
-# In[ ]:
+# %%
 
 
 #return all tweets from given screenname
@@ -129,7 +130,7 @@ def get_tweets_user(screen_name, max_tweets, startDate, endDate):
 
 # ## Load Quandl stock data
 
-# In[2]:
+# %%
 
 
 import pandas as pd
@@ -143,7 +144,7 @@ get_ipython().run_line_magic('pylab', 'inline')
 quandl.ApiConfig.api_key = "cHs3hSC-ys83Msb8qXyh"#This is Jorge's key, get yourself a new one.
 
 
-# In[3]:
+# %%
 
 
 start_date = datetime.datetime(2015,1,1) # Beginning of period 
@@ -152,7 +153,7 @@ stock = "TSLA" # some stock label we are interested in
 tesla = quandl.get("WIKI/" + stock, start_date=start_date, end_date=end_date) #download data with quandl
 
 
-# In[4]:
+# %%
 
 
 pylab.rcParams['figure.figsize'] = (15, 9)
@@ -161,7 +162,7 @@ tesla["Close"].plot() # plot daily closing prices
 plt.show()
 
 
-# In[ ]:
+# %%
 
 
 tesla["DailyPercentDiff"] = (tesla["Close"] - tesla["Open"]) / tesla["Open"]
@@ -172,7 +173,7 @@ plt.show()
 
 # ## Proof of Principle : Do Barack Obama's tweets effect TSLA closing prices?
 
-# In[ ]:
+# %%
 
 
 start_date = datetime.datetime(2015,1,1) # Beginning of period 
@@ -181,19 +182,19 @@ stock = "TSLA" # some stock label we are interested in
 tesla = quandl.get("WIKI/" + stock, start_date=start_date, end_date=end_date) #download data with quandl
 
 
-# In[12]:
+# %%
 
 
 baracks_tweets = get_tweets_user('BarackObama', 1000, start_date, end_date)
 
 
-# In[13]:
+# %%
 
 
 baracks_tweets
 
 
-# In[ ]:
+# %%
 
 
 
